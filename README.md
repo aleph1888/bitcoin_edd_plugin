@@ -19,15 +19,16 @@ Configuration
 1) Set gateway default values on *Campaings - Settings - Gateways*.
 
 - Fields information:
-**MPK**: platform secret MPK. Set here your *master public key* (1)
-```sh  
+	* Platform **master public key** MPK(1) => MPK that PHP Generator will use to generate addresses; the one related to electrum deterministic wallet and the one for obelisk-monitor range alert. (Only used if *One or multiple @BTC* is set to *ONE*)
+	* One or multiple @BTC => Allowed values are *ONE* and *MULTIPLE* meaning whether each campaign has its own @BTC or if every transfer goes to your platform @BTC.
+	* Transfer info => Message that will be displayed in checkout section previous to purchase. Here you can inform to your user that an email with instructions will be send.
+	* FROM / SUBJECT / BODY => This is instructions email.
+
 (1) The master public key is an interesting concept. A deterministic_wallet can be initialized with a master public key that allows generating all the public keys with deterministic_wallet::generate_public_key(), but not the corresponding private keys (through the secret parameter).
-```
 
 Imagine a small business owner who wants their staff to have access to deposit addresses in their wallet to accept payments from customers, but not the ability to access all the funds. Waiters in a restaurant can accept Bitcoin payments which only the shop owner can spend.
 
 Another use-case is a website keeping their Bitcoins offline. They can accept payments into their offline wallet. Without access to their seed (which is kept offline), nobody can spend their Bitcoins.  
-
 
 Version
 ----
@@ -50,15 +51,15 @@ Dependencies
 - Deterministic wallet => electrum wallet (2)(a)
 - Transaction monitor => obelisk-monitor (3)
 
-```sh  
+  
 (1) https://github.com/aleph1888/Coopfunding/tree/v05/mod/fundraising-bitcoin/lib
 
 (2) http://libbitcoin.dyne.org/doc/crypto.html#deterministic-wallets
 
 (a) A deterministic wallet can be backed up by copying the starting seed value to a secure location, and this only needs to be done once. If the wallet ever gets lost, all private and public keys can be regenerated from the initial seed.
-`
+
 (3) https://github.com/caedesvvv/obelisk-monitor
-```
+
 
 ##### Calaways EDD gateways bundle. Configure Plugins. Instructions in following README.md files
 
